@@ -25,7 +25,7 @@ namespace GenerateNabovarselXml
                     loopCount++;
                 }
 
-                var personFnr = personer[personIndex].Ssn;
+                var personFnr = personer[personIndex].EncryptedSsn;
                 var personNavn = personer[personIndex + navnOffset].Name;
                 var adresse = personer[personIndex + navnOffset].Address;
 
