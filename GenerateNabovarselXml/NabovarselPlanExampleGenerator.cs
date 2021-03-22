@@ -15,7 +15,7 @@ namespace GenerateNabovarselXml
             var neigbours = new List<BeroertPartType>();
 
             //Split number of neighbors
-            var foretak = numberOfGeneratedNeighbours * 0.1;
+            var foretak = numberOfGeneratedNeighbours * 0.0;
             var personer = numberOfGeneratedNeighbours - foretak;
 
             var berortePersoner = DummyBerortPartPersonGenerator.GenerateBeroerteParter((int)personer);

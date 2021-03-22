@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using no.kxml.skjema.dibk.nabovarselPlan;
-using System;
 using System.Collections.Generic;
 
 namespace GenerateNabovarselXml
@@ -11,12 +10,24 @@ namespace GenerateNabovarselXml
         public static List<BeroertPartType> GenerateBeroerteParter(int numberOf)
         {
             var retVal = new List<BeroertPartType>();
-            var persons = GetFnr();
-            
+            var personer = GetFnr();
+            var navnOffset = 0;
+            var personIndex = 0;
+
+            var loopCount = 1;
+
             for (int i = 0; i < numberOf; i++)
             {
-                var random = new Random();
-                var encryptedFnr = persons[random.Next(0, persons.Count)];
+                if (i > personer.Count * loopCount - 1 - navnOffset)
+                {
+                    personIndex = 0;
+                    navnOffset++;
+                    loopCount++;
+                }
+
+                var personFnr = personer[personIndex].Ssn;
+                var personNavn = personer[personIndex + navnOffset].Name;
+                var adresse = personer[personIndex + navnOffset].Address;
 
                 var neigbour = new BeroertPartType()
                 {
@@ -25,12 +36,12 @@ namespace GenerateNabovarselXml
                         kodebeskrivelse = "Privatperson",
                         kodeverdi = "Privatperson"
                     },
-                    navn = encryptedFnr.Name,
-                    foedselsnummer = encryptedFnr.EncryptedSsn,
+                    navn = personNavn,
+                    foedselsnummer = personFnr,
 
                     adresse = new EnkelAdresseType()
                     {
-                        adresselinje1 = encryptedFnr.Address,
+                        adresselinje1 = adresse,
                         postnr = "3502",
                         poststed = "Hønefoss",
                         landkode = "no"
@@ -61,6 +72,7 @@ namespace GenerateNabovarselXml
                     }
                 };
                 retVal.Add(neigbour);
+                personIndex++;
             }
 
             return retVal;
