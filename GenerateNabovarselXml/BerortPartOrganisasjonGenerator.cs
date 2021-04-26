@@ -10,12 +10,14 @@ namespace GenerateNabovarselXml
         public static List<BeroertPartType> GenerateBeroerteParter(int numberOf)
         {
             var retVal = new List<BeroertPartType>();
-            var personer = GetOrganisasjon();
+            var organisasjoner = GetOrganisasjon();
             
             for (int i = 0; i < numberOf; i++)
             {
-                var random = new Random();
-                var person = personer[random.Next(0, personer.Count)];
+                //var random = new Random();
+                //var person = personer[random.Next(0, personer.Count)];
+
+                var organisasjon = organisasjoner[i];
 
                 var neigbour = new BeroertPartType()
                 {
@@ -24,8 +26,8 @@ namespace GenerateNabovarselXml
                         kodebeskrivelse = "Foretak",
                         kodeverdi = "Foretak"
                     },
-                    navn =  person.Item1,
-                    organisasjonsnummer = person.Item2,
+                    navn =  organisasjon.Item1,
+                    organisasjonsnummer = organisasjon.Item2,
                     kontaktperson = new KontaktpersonType() { navn = $"Kontaktperson Navn {i}", epost = "kontakt@person.test" },
 
                     adresse = new EnkelAdresseType()

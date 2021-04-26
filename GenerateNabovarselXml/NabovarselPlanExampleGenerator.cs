@@ -18,6 +18,7 @@ namespace GenerateNabovarselXml
             var foretak = numberOfGeneratedNeighbours * 0.0;
             var personer = numberOfGeneratedNeighbours - foretak;
 
+            //var berortePersoner = BerortPartPersonGenerator.GenerateBeroerteParter((int)personer);
             var berortePersoner = DummyBerortPartPersonGenerator.GenerateBeroerteParter((int)personer);
             var berorteForetak = BerortPartOrganisasjonGenerator.GenerateBeroerteParter((int)foretak);
 

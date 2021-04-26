@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using no.kxml.skjema.dibk.nabovarselPlan;
+using System;
 using System.Collections.Generic;
 
 namespace GenerateNabovarselXml
@@ -7,8 +8,11 @@ namespace GenerateNabovarselXml
     public class DummyBerortPartPersonGenerator
     {
 
+        private static List<string> _usedFnrs;
         public static List<BeroertPartType> GenerateBeroerteParter(int numberOf)
         {
+            _usedFnrs = new List<string>();
+
             var retVal = new List<BeroertPartType>();
             var personer = GetFnr();
             var navnOffset = 0;
@@ -25,9 +29,10 @@ namespace GenerateNabovarselXml
                     loopCount++;
                 }
 
-                var personFnr = personer[personIndex].EncryptedSsn;
+                var personEncryptedFnr = personer[personIndex].EncryptedSsn;
                 var personNavn = personer[personIndex + navnOffset].Name;
                 var adresse = personer[personIndex + navnOffset].Address;
+                _usedFnrs.Add(personer[personIndex].Ssn);
 
                 var neigbour = new BeroertPartType()
                 {
@@ -37,7 +42,7 @@ namespace GenerateNabovarselXml
                         kodeverdi = "Privatperson"
                     },
                     navn = personNavn,
-                    foedselsnummer = personFnr,
+                    foedselsnummer = personEncryptedFnr,
 
                     adresse = new EnkelAdresseType()
                     {
@@ -75,7 +80,17 @@ namespace GenerateNabovarselXml
                 personIndex++;
             }
 
+            LogUsedFnr();
             return retVal;
+        }
+
+        private static void LogUsedFnr()
+        {
+            var fileContent = JsonConvert.SerializeObject(_usedFnrs);
+            var filename = $@"c:\temp\{DateTime.Now.ToString("yyyy-MM-dd HH.mm.ss")}-used-fnrs.json";
+            Console.WriteLine($"    -- Used fnrs stored to {filename}");
+
+            System.IO.File.WriteAllText(filename, fileContent);
         }
 
         private static List<Person> GetFnr()
