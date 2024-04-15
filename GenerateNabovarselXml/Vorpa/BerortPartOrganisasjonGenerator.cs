@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace GenerateNabovarselXml
+namespace GenerateNabovarselXml.Vorpa
 {
     public class BerortPartOrganisasjonGenerator
     {
@@ -11,7 +11,7 @@ namespace GenerateNabovarselXml
         {
             var retVal = new List<BeroertPartType>();
             var organisasjoner = GetOrganisasjon();
-            
+
             for (int i = 0; i < numberOf; i++)
             {
                 //var random = new Random();
@@ -26,7 +26,7 @@ namespace GenerateNabovarselXml
                         kodebeskrivelse = "Foretak",
                         kodeverdi = "Foretak"
                     },
-                    navn =  organisasjon.Item1,
+                    navn = organisasjon.Item1,
                     organisasjonsnummer = organisasjon.Item2,
                     kontaktperson = new KontaktpersonType() { navn = $"Kontaktperson Navn {i}", epost = "kontakt@person.test" },
 
@@ -103,6 +103,6 @@ namespace GenerateNabovarselXml
         }
     }
 
-    
+
 }
 

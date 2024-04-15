@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GenerateNabovarselXml
+namespace GenerateNabovarselXml.Vorpa
 {
     public class VORPA
     {

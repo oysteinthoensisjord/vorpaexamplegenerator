@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace GenerateNabovarselXml
+namespace GenerateNabovarselXml.Vorpa
 {
     public class BerortPartPersonGenerator
     {
@@ -12,7 +12,7 @@ namespace GenerateNabovarselXml
         {
             var retVal = new List<BeroertPartType>();
             var personer = GetPersoner();
-            
+
             for (int i = 0; i < numberOf; i++)
             {
                 var random = new Random();
@@ -25,7 +25,7 @@ namespace GenerateNabovarselXml
                         kodebeskrivelse = "Privatperson",
                         kodeverdi = "Privatperson"
                     },
-                    navn =  person.Item1,
+                    navn = person.Item1,
                     foedselsnummer = person.Item2,
 
                     adresse = new EnkelAdresseType()
@@ -103,6 +103,6 @@ namespace GenerateNabovarselXml
         }
     }
 
-    
+
 }
 

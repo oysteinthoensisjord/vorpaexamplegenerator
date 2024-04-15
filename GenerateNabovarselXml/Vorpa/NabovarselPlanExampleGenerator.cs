@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using no.kxml.skjema.dibk.nabovarselPlan;
 
-namespace GenerateNabovarselXml
+namespace GenerateNabovarselXml.Vorpa
 {
     public class NabovarselPlanExampleGenerator
     {
@@ -95,13 +95,13 @@ namespace GenerateNabovarselXml
             };
 
             nabovarselPlan.beroerteParter = neigbours.ToArray();
-        
 
-        nabovarselPlan.planforslag = new PlanType()
-        {
-            plannavn = $"VORPA-generator {DateTime.Now}",
+
+            nabovarselPlan.planforslag = new PlanType()
+            {
+                plannavn = $"VORPA-generator {DateTime.Now}",
                 hjemmesidePlanforslag = new[]
-                {
+                    {
                     "www.kommunensHjemmeside.no",
                     "www.planforslag.no"
                 },
@@ -111,15 +111,15 @@ namespace GenerateNabovarselXml
                 begrunnelseKU = "Begrunnelse for hvorfor det ikke er krav om konsekvensutredning.",
                 hjemmesidePlanprogram = "www.planprogram.no",
                 planHensikt =
-                    "I tråd med områdereguleringsplanens målsettinger om å skape et levende og attraktivt " +
-                    "bysentrum i Hønefoss, ønskes området detaljregulert for å legge til rette for et " +
-                    "bærekraftig og realistisk byutviklingsprosjekt.  Aktuelle funksjoner er utvidelse av hotell/konferansesenter, serveringsteder, " +
-                    "handel og boliger. Eksisterende kulturmiljø vil være et viktig tema i planarbeidet. " +
-                    "Det er ikke krav om planprogram eller konsekvensutredning i tilknytning til planforslaget.",
+                        "I tråd med områdereguleringsplanens målsettinger om å skape et levende og attraktivt " +
+                        "bysentrum i Hønefoss, ønskes området detaljregulert for å legge til rette for et " +
+                        "bærekraftig og realistisk byutviklingsprosjekt.  Aktuelle funksjoner er utvidelse av hotell/konferansesenter, serveringsteder, " +
+                        "handel og boliger. Eksisterende kulturmiljø vil være et viktig tema i planarbeidet. " +
+                        "Det er ikke krav om planprogram eller konsekvensutredning i tilknytning til planforslaget.",
                 fristForInnspill = new DateTime(2020, 08, 01),
                 fristForInnspillSpecified = true,
                 saksgangOgMedvirkning = "Saksgang og medvirkning....",
-                
+
                 plantype = new KodeType
                 {
                     kodeverdi = "35",
@@ -130,9 +130,9 @@ namespace GenerateNabovarselXml
                     saksaar = "2020",
                     sakssekvensnummer = "11111"
                 }
-                };
+            };
 
-        nabovarselPlan.signatur = new SignaturType
+            nabovarselPlan.signatur = new SignaturType
             {
                 signaturdato = new DateTime(2019, 09, 18),
                 signaturdatoSpecified = true,

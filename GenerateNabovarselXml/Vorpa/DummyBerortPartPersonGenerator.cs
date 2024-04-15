@@ -3,7 +3,7 @@ using no.kxml.skjema.dibk.nabovarselPlan;
 using System;
 using System.Collections.Generic;
 
-namespace GenerateNabovarselXml
+namespace GenerateNabovarselXml.Vorpa
 {
     public class DummyBerortPartPersonGenerator
     {
@@ -30,8 +30,8 @@ namespace GenerateNabovarselXml
                 }
 
                 var personEncryptedFnr = personer[personIndex].EncryptedSsn;
-                var personNavn = personer[personIndex + navnOffset].Name;
-                var adresse = personer[personIndex + navnOffset].Address;
+                var personNavn = personer[personIndex].Name;
+                var adresse = personer[personIndex].Address;
                 _usedFnrs.Add(personer[personIndex].Ssn);
 
                 var neigbour = new BeroertPartType()

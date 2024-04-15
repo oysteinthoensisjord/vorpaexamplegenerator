@@ -3,7 +3,7 @@ using no.kxml.skjema.dibk.nabovarselPlan;
 using System;
 using System.Collections.Generic;
 
-namespace GenerateNabovarselXml
+namespace GenerateNabovarselXml.Vorpa
 {
     public class DummyBerortPartOrganisasjonGenerator
     {
@@ -12,7 +12,7 @@ namespace GenerateNabovarselXml
         {
             var retVal = new List<BeroertPartType>();
             var orgs = GetNumbers();
-            
+
             for (int i = 0; i < numberOf; i++)
             {
                 var random = new Random();
@@ -25,7 +25,7 @@ namespace GenerateNabovarselXml
                         kodebeskrivelse = "Foretak",
                         kodeverdi = "Foretak"
                     },
-                    navn =  $"Superforetak {i}",
+                    navn = $"Superforetak {i}",
                     organisasjonsnummer = orgnr,
                     kontaktperson = new KontaktpersonType() { navn = $"Kontaktperson Navn {i}", epost = "kontakt@person.test" },
 
@@ -74,6 +74,6 @@ namespace GenerateNabovarselXml
         }
     }
 
-    
+
 }
 
