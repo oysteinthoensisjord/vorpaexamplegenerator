@@ -36,8 +36,8 @@ namespace GenerateNabovarselXml.VorpaPlussH
                     kodeverdi = "Foretak",
                     kodebeskrivelse = "Foretak"
                 },
-                organisasjonsnummer = "910467905",
-                navn = "BRYGGJA OG RANHEIM AS",
+                organisasjonsnummer = "911455307",
+                navn = "SÆBØVÅGEN OG LONGYEARBYEN",
                 adresse = new EnkelAdresseType()
                 {
                     adresselinje1 = "Sentrum",
